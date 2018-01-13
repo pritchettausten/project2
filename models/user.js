@@ -24,7 +24,7 @@
         User.hasMany(models.Post, {
             onDelete: "cascade"
         });
-        User.hasMany(models.Place);
+        //User.hasMany(models.Place);
     };
     return User;
 }
