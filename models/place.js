@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes){
             }
         },
         geoLoc: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.STRING,
             allowNull: true
         },
         nearby: {
