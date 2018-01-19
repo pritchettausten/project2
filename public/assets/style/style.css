@@ -1,0 +1,51 @@
+/* set parallax height */
+
+.parallax-container {
+    height: 500px;
+}
+
+.stick-bar {
+    z-index: 1;
+}
+
+
+/* set push-pin parameters */
+.pin-top {
+    position: relative;
+}
+
+.pin-bottom {
+    position: relative;
+}
+
+.pinned {
+    position: fixed !important;
+}
+
+
+/* style */
+
+.wide-container {
+    margin-right: 2%;
+    margin-left: 2%;
+}
+
+/* #header {
+    z-index: 1;
+} */
+
+#activity-side {
+    margin-right: 5%;
+    padding: 20px 10px 10px 10px;
+}
+
+/* #main-section {
+    padding: 40px 0px 0px 80px;
+} */
+
+/* MAPS */
+#map {
+    width: 100%;
+    height: 400px;
+    background-color: grey;
+  }
