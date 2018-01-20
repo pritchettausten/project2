@@ -14,6 +14,10 @@
                 len: [1]
             }
         },
+        about: {
+            type: DataTypes.TEXT,
+            allowNull: true
+        },
         username: {
             type: DataTypes.STRING
         },
@@ -32,7 +36,6 @@
         User.hasMany(models.Post, {
             onDelete: "cascade"
         });
-        //User.hasMany(models.Place);
     };
     return User;
 }

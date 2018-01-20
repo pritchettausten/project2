@@ -1,0 +1,188 @@
+<div class="navbar-fixed">
+        <nav class="stick-bar sticky pin-top  indigo lighten-2">
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo">Logo</a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a href="sass.html"></a>
+                    </li>
+                    <li>
+                        <a class="modal-trigger" href="#login-modal">Login</a>
+
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col s12 m12 l12 center" style="margin-top: 15px;">
+
+            <h3>My Google Maps Demo</h3>
+            <div id="map"></div>
+
+        <div class="col s12 m12 l12 grey" style="margin-top: 10px;">
+
+
+            <!-- <h3 class="center-align"> Filter Activities</h3> -->
+
+            <div class="col m2 l2"></div>
+            <div class="col m1 l1 hoverable z-depth-2">
+                <img src="assets/images/hiking-icon.png" alt="hiking" class="responsive-img">
+            </div>
+
+            <div class="col m1 l1 hoverable">
+                <img src="assets/images/climbing-icon.png" alt="climbing" class="responsive-img">
+            </div>
+
+            <div class="col m1 l1 hoverable">
+                <img src="assets/images/kayak-icon.png" alt="kayaking" class="responsive-img">
+            </div>
+
+            <div class="col m1 l1 hoverable">
+                <img src="assets/images/skiing-icon.png" alt="cross-country-skiing" class="responsive-img">
+            </div>
+            <div class="col m1 l1 hoverable">
+                <img src="assets/images/swimming.png" alt="swimming" class="responsive-img">
+            </div>
+            <div class="col m1 l1 hoverable">
+                <img src="assets/images/fishing-icon.png" alt="fishing" class="responsive-img">
+            </div>
+            <div class="col m1 l1 hoverable">
+                <img src="assets/images/camping-icon.png" alt="camping" class="responsive-img">
+            </div>
+            <div class="col m1 l1 hoverable">
+                <img src="assets/images/biking-icon.png" alt="biking" class="responsive-img">
+            </div>
+            <div class="col m2 l2"></div>
+
+
+
+        </div>
+
+
+    </div>
+
+    <div class="row wide-container">
+        <!-- <h4 class="blue-text"> Search for an activity </h4>
+            <div class="chips chips-autocomplete"></div> -->
+        <div class="col s12 m12 l12">
+
+            <h2 class="center-align">Activities Near You</h2>
+
+            <div class="divider"></div>
+        </div>
+        {{#each review}}
+        <div class="row">
+                <div class="col s3 m3 l3">
+                    <img src="{{this.picture}}" alt="this is a test" class="responsive-img  right location-pictures">
+                </div>
+                
+                <div class="col s9 m9 l9">
+                    <div class="row">
+                        <div class="col s8 m8 l8">
+                            <h4>{{this.location}}</h4>
+                        </div>
+                        <div class="col s4 m4 l4">
+                            <div class="star-rating">{{this.rating}}</div>
+                        </div>
+                        </div>
+                    <p class="location-description flow-text">{{this.body}} </p>
+                    <div class="divider"></div>
+                </div>
+            </div>
+
+        {{/each}}
+    </div>
+
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="Location" id="location_name" type="text" class="validate">
+                        <label for="location_name">Location Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                            <input placeholder="Select Activity" id="activity_name" type="radio" class="validate">
+                        <select id="activity_select">
+                            <option value="" disabled selected>Which Activity?</option>
+                            <option value="1">Hiking</option>
+                            <option value="2">Biking</option>
+                            <option value="3">Climbing</option>
+                            <option value="4">Camping</option>
+                            <option value="5">Kayaking</option>
+                            <option value="6">Skiing</option>
+                            <option value="7">Swimming</option>
+                            <option value="8">Fishing</option>
+                        </select>
+                        <label>Select Activity</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="write-post" class="materialize-textarea" data-length="250"></textarea>
+                        <label for="write-post">Write a Post</label>
+                    </div>
+                    {{!-- <a class="waves-effect waves-light btn">button</a> --}}
+                    <button type="submit" class="btn btn-success submit" id="submit">Submit</button>
+                     
+                </div>
+            </form>
+        </div>
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Footer Content</h5>
+                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2014 Copyright Text
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 
+    </div> -->
+
+
+    <!--Import jQuery before materialize.js-->
+    <!-- Jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <!-- Compiled and minified Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="assets/java/app.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkRCGxPbugNrJuV7hLigTJRxIU-F3bTlY&callback=initMap">
+    </script>

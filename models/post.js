@@ -1,10 +1,29 @@
 module.exports = function(sequelize, DataTypes) {
     var Post = sequelize.define("Post", {
 
+        locationName: {
+            type: DataTypes.STRING(200),
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+        activity: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         body: {
             type: DataTypes.TEXT,
             allowNull: false,
             len: [1]
+        },
+        lat: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        long: {
+            type: DataTypes.STRING,
+            allowNull: true
         },
         rating: {
             type: DataTypes.INTEGER,
@@ -16,18 +35,13 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
   
-    Post.associate = function(models){
-        Post.belongsTo(models.User, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-        Post.belongsTo(models.Place, {
-            foreignKey: {
-                allowNull: false
-            }
-        })
-    };
+    // Post.associate = function(models){
+    //     Post.belongsTo(models.User, {
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
   
     return Post;
   }; 

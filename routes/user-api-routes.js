@@ -13,9 +13,10 @@ module.exports = function(app){
                 else{
                     console.log("this is a hash", hash)
                     db.User.create({
-                        name: req.body.firstname,
+                        name: req.body.name,
                         email: req.body.email,
-                        username: (req.body.email).substring(0, (req.body.email).lastIndexOf("@")),
+                        about: req.body.about,
+                        username: req.body.username,
                         password: hash
                     }).then(function(dbUser) {
                     
@@ -29,7 +30,7 @@ module.exports = function(app){
 
     });
 
-    app.post("/user/login", function(req, res){
+    app.post("/login", function(req, res){
         db.User.findOne({
             where: {
                 username: req.body.username
@@ -42,6 +43,7 @@ module.exports = function(app){
                 console.log(response);
                 if(response){
                     var user = {
+                        id: dbData.dataValues.id,
                         name: dbData.dataValues.name,
                         email: dbData.dataValues.email,
                         username: dbData.dataValues.username,
