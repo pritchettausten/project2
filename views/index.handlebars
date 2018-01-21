@@ -1,10 +1,10 @@
-<div class="navbar-fixed">
-        <nav class="stick-bar sticky pin-top  indigo lighten-2">
+ <div class="navbar-fixed">
+        <nav class="stick-bar sticky pin-top indigo lighten-2">
             <div class="nav-wrapper">
                 <a href="#!" class="brand-logo">Logo</a>
                 <ul class="right hide-on-med-and-down">
                     <li>
-                        <a href="sass.html"></a>
+                        <a class="modal-trigger" href="#create-modal">Create Place</a>
                     </li>
                     <li>
                         <a class="modal-trigger" href="#login-modal">Login</a>
@@ -15,15 +15,135 @@
         </nav>
     </div>
 
-    <div id="login-modal" class="modal">
+    <div id="create-modal" class="modal">
         <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            <div class="row">
+                <h4>Create a New Place</h4>
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="location_name" type="text" class="validate">
+                            <label for="location_name">Location Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="Select Activity" id="activity_name" type="radio" class="validate">
+                            <select>
+                                <option value="" disabled selected>Which Activity?</option>
+                                <option value="1">Hiking</option>
+                                <option value="2">Biking</option>
+                                <option value="3">Climbing</option>
+                                <option value="4">Camping</option>
+                                <option value="5">Kayaking</option>
+                                <option value="6">Skiing</option>
+                                <option value="7">Swimming</option>
+                                <option value="8">Fishing</option>
+                            </select>
+                            <label>Select Activity</label>
+                        </div>
+                        <div class="file-field input-field col s6">
+                            <div>
+                                <input type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <i class="material-icons prefix">publish</i>
+                                <input placeholder="Add Image" class="file-path validate" type="text">
+                            </div>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea id="write-post" class="materialize-textarea" data-length="250"></textarea>
+                            <label for="write-post">Write a Post</label>
+                        </div>
+                    </div>
+                </form>
+                <a class="waves-effect waves-light btn right">Submit</a>
+            </div>
         </div>
     </div>
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s3">
+                            <a class="active" href="#login">Login</a>
+                        </li>
+                        <li class="tab col s3">
+                            <a href="#create-user">New User</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="login" class="col s12">
+                <div class="row">
+                    <h4>Login</h4>
+                    <form class="col s12">
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="login-name" type="text" class="validate">
+                                <label for="login-name">Username/Email</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="login-password" type="password" class="validate">
+                                <label for="login-password">Password</label>
+                            </div>
+                        </div>
+
+
+                    </form>
+                    <div class="row">
+                        <div class="col s6"></div>
+                        <div class="col s3">
+                            <a class="waves-effect waves-light btn right">Login</a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div id="create-user" class="col s12">
+                <h4>Create User</h4>
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="full-name" type="text" class="validate">
+                                <label for="full_name">Full Name</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="email" type="email" class="validate">
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="password" type="password" class="validate">
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                    </form>
+                    <a class="waves-effect waves-light btn right">Create User</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    
+
 
     <div class="row">
 
@@ -32,38 +152,38 @@
             <h3>My Google Maps Demo</h3>
             <div id="map"></div>
 
+        </div>
         <div class="col s12 m12 l12 grey" style="margin-top: 10px;">
 
 
-            <!-- <h3 class="center-align"> Filter Activities</h3> -->
 
             <div class="col m2 l2"></div>
-            <div class="col m1 l1 hoverable z-depth-2">
-                <img src="assets/images/hiking-icon.png" alt="hiking" class="responsive-img">
+            <div class="col m1 l1 hoverable z-depth-2 activity-icon">
+                <img src="/assets/images/hiking-icon.png" alt="hiking" class="responsive-img">
             </div>
 
-            <div class="col m1 l1 hoverable">
-                <img src="assets/images/climbing-icon.png" alt="climbing" class="responsive-img">
+            <div class="col m1 l1 hoverable activity-icon">
+                <img src="/assets/images/climbing-icon.png" alt="climbing" class="responsive-img">
             </div>
 
-            <div class="col m1 l1 hoverable">
-                <img src="assets/images/kayak-icon.png" alt="kayaking" class="responsive-img">
+            <div class="col m1 l1 hoverable activity-icon">
+                <img src="/assets/images/kayak-icon.png" alt="kayaking" class="responsive-img">
             </div>
 
-            <div class="col m1 l1 hoverable">
-                <img src="assets/images/skiing-icon.png" alt="cross-country-skiing" class="responsive-img">
+            <div class="col m1 l1 hoverable activity-icon">
+                <img src="/assets/images/skiing-icon.png" alt="cross-country skiing" class="responsive-img">
             </div>
-            <div class="col m1 l1 hoverable">
-                <img src="assets/images/swimming.png" alt="swimming" class="responsive-img">
+            <div class="col m1 l1 hoverable activity-icon">
+                <img src="/assets/images/swimming.png" alt="swimming" class="responsive-img">
             </div>
-            <div class="col m1 l1 hoverable">
-                <img src="assets/images/fishing-icon.png" alt="fishing" class="responsive-img">
+            <div class="col m1 l1 hoverable activity-icon">
+                <img src="/assets/images/fishing-icon.png" alt="fishing" class="responsive-img">
             </div>
-            <div class="col m1 l1 hoverable">
-                <img src="assets/images/camping-icon.png" alt="camping" class="responsive-img">
+            <div class="col m1 l1 hoverable activity-icon">
+                <img src="/assets/images/camping-icon.png" alt="camping" class="responsive-img">
             </div>
-            <div class="col m1 l1 hoverable">
-                <img src="assets/images/biking-icon.png" alt="biking" class="responsive-img">
+            <div class="col m1 l1 hoverable activity-icon">
+                <img src="/assets/images/biking-icon.png" alt="biking" class="responsive-img">
             </div>
             <div class="col m2 l2"></div>
 
@@ -81,63 +201,64 @@
 
             <h2 class="center-align">Activities Near You</h2>
 
-            <div class="divider"></div>
+            <!-- <div class="divider"></div> -->
         </div>
-        {{#each review}}
-        <div class="row">
+
+        <div class="container">
+
+            <div class="row">
                 <div class="col s3 m3 l3">
-                    <img src="{{this.picture}}" alt="this is a test" class="responsive-img  right location-pictures">
+                    <div class="star-rating center">****</div>
+                    <img src="http://1.media.dorkly.cvcdn.com/77/60/04ca81be9375a961d02c217fd706f8d5.jpg" alt="this is a test" class="responsive-img right location-pictures">
                 </div>
-                
+
                 <div class="col s9 m9 l9">
-                    <div class="row">
-                        <div class="col s8 m8 l8">
-                            <h4>{{this.location}}</h4>
-                        </div>
-                        <div class="col s4 m4 l4">
-                            <div class="star-rating">{{this.rating}}</div>
-                        </div>
-                        </div>
-                    <p class="location-description flow-text">{{this.body}} </p>
-                    <div class="divider"></div>
+                    <h4>Location</h4>
+                    <p class="flow-text">This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This
+                        is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is
+                        a test. This is a test. This is a test. </p>
                 </div>
             </div>
 
-        {{/each}}
+            <div class="divider"></div>
+
+            <div class="row">
+                <div class="col s3 m3 l3">
+                    <div class="star-rating center">****</div>
+                    <img src="http://donthatethegeek.com/wp-content/uploads/2016/06/darth-vader-rogue-one.jpg" alt="this is a test" class="responsive-img right location-pictures">
+                </div>
+
+                <div class="col s9 m9 l9">
+                    <h4>Location</h4>
+                    <p class="flow-text">This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This
+                        is a test. This is a test. This is a test. This is a test. This is a test. This is a test. </p>
+
+                </div>
+
+            </div>
+            <div class="divider"></div>
+
+
+            <div class="row">
+                <div class="col s3 m3 l3">
+                    <div class="star-rating center">****</div>
+                    <img src="https://upload.wikimedia.org/wikipedia/en/7/76/Darth_Vader.jpg" alt="this is a test" class="responsive-img  right location-pictures">
+                </div>
+
+                <div class="col s9 m9 l9">
+                    <h4>Location</h4>
+                    <p class="flow-text">thijsdjfakjdljfiowajeklfjalkjdfioajsdklfjaskldjf;aoiwejlck;jakmalekjadfa dkfj adf asjkdfja djf alsd f
+                        fasodjf jklj e adljf a ejlj ekfja isdjf ae jeijajd fka klj f;aej fakdjf a;kej f;ake f daoifjakjsf
+                        e a;ejf adslkf ad fkajd fe ifjaj fadjfdf adfkdlfd </p>
+
+                </div>
+            </div>
+            <div class="divider"></div>
+
+        </div>
+
     </div>
 
-        <div class="row">
-            <form class="col s12">
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input placeholder="Location" id="location_name" type="text" class="validate">
-                        <label for="location_name">Location Name</label>
-                    </div>
-                    <div class="input-field col s6">
-                            <input placeholder="Select Activity" id="activity_name" type="radio" class="validate">
-                        <select id="activity_select">
-                            <option value="" disabled selected>Which Activity?</option>
-                            <option value="1">Hiking</option>
-                            <option value="2">Biking</option>
-                            <option value="3">Climbing</option>
-                            <option value="4">Camping</option>
-                            <option value="5">Kayaking</option>
-                            <option value="6">Skiing</option>
-                            <option value="7">Swimming</option>
-                            <option value="8">Fishing</option>
-                        </select>
-                        <label>Select Activity</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <textarea id="write-post" class="materialize-textarea" data-length="250"></textarea>
-                        <label for="write-post">Write a Post</label>
-                    </div>
-                    {{!-- <a class="waves-effect waves-light btn">button</a> --}}
-                    <button type="submit" class="btn btn-success submit" id="submit">Submit</button>
-                     
-                </div>
-            </form>
-        </div>
 
     <footer class="page-footer">
         <div class="container">
@@ -172,17 +293,3 @@
             </div>
         </div>
     </footer>
-
-    <!-- 
-    </div> -->
-
-
-    <!--Import jQuery before materialize.js-->
-    <!-- Jquery cdn -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
-    <!-- Compiled and minified Materialize JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script src="assets/java/app.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkRCGxPbugNrJuV7hLigTJRxIU-F3bTlY&callback=initMap">
-    </script>
