@@ -98,56 +98,85 @@ $('select').material_select();
 $("#submit").on("click", function(event){
     event.preventDefault();
     event.stopPropagation();
-
+    var CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/outdoorproject/upload"; 
+    var CLOUDINARY_UPLOAD_PRESET = "th8ye3vy";
+    var picture = $("#activityPic");
+    var file = picture[0].files[0];
+    var formData = new FormData();
+       formData.append("file", file);
+       formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+    console.log(file);
+    $.ajax({
+        url: CLOUDINARY_URL,
+        type: "POST",
+        data: formData,
+        processData: false,
+        contentType: false
+      }).then(function(res) {
+        var picUrl = res.url;
+    console.log(userInput);
     var userInput = {
         locationName: $("#location_name").val(),
-        activity: $("#activity_select option:selected").text(),
-        body: $("#write-post").val()    
+        activity: $("select option:selected").text(),
+        body: $("#write-post").val(),
+        picture: picUrl    
     };
     console.log(userInput);
     $.ajax({
         type: "POST",
         url:"/api/posts",
         data: userInput,
-    })
-    //return false;
+    });
+    });
 });
 
 $("#click").on("click", function() {
     event.preventDefault();
-       var Name = $("#name").val().trim();
+      var CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/outdoorproject/upload"; 
+      var CLOUDINARY_UPLOAD_PRESET = "th8ye3vy";
+      
+    
+       var Name = $("#full-name").val().trim();
        var Email = $("#email").val().trim();
        var About = $("#about").val().trim();
        var Password =  $("#password").val().trim();
+       var picture = $("#picture");
+       var file = picture[0].files[0];
+       console.log(picture[0].files[0]);
        var Username = getUsername(Email);
-       var User = {
+       var formData = new FormData();
+       formData.append("file", file);
+       formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+    $.ajax({
+        url: CLOUDINARY_URL,
+        type: "POST",
+        data: formData,
+        processData: false,
+        contentType: false
+      }).then(function(res) {
+        var picUrl = res.url;
+        var User = {
            name: Name,
            email: Email,
            about: About,
            username: Username,
-           password: Password
+           password: Password,
+           picture: picUrl
        };
        console.log(User);
-      
-       $.ajax("/user/new", {
-        type: "POST",
-        data: User
-      }).then(function(err) {
-          if (err) {
-              console.log(err);
-          }
+        $.ajax("/user/new", {
+            type: "POST",
+            data: User
+        }).then(function(err) {
+            if (err) {
+                console.log(err);
+            }
+        });
       });
-      
-      
-       function pushPic (pic) {
 
-      };
-      
        function getUsername (g) {
           var a = g.split("@");
           var b = a[0];
-          console.log(a);
-          console.log(b);
           return b;
        };
 

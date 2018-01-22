@@ -17,7 +17,8 @@ module.exports = function(app){
                         email: req.body.email,
                         about: req.body.about,
                         username: req.body.username,
-                        password: hash
+                        password: hash,
+                        picture: req.body.picture
                     }).then(function(dbUser) {
                     
                         res.json(dbUser);
