@@ -28,7 +28,7 @@
                         <div class="input-field col s6">
                             <input placeholder="Select Activity" id="activity_name" type="radio" class="validate">
                             <select>
-                                <option value="" disabled selected>Which Activity?</option>
+                                <option value="">Which Activity?</option>
                                 <option value="1">Hiking</option>
                                 <option value="2">Biking</option>
                                 <option value="3">Climbing</option>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="file-field input-field col s6">
                             <div>
-                                <input type="file">
+                                <input type="file" id="activityPic">
                             </div>
                             <div class="file-path-wrapper">
                                 <i class="material-icons prefix">publish</i>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </form>
-                <a class="waves-effect waves-light btn right">Submit</a>
+                <a class="waves-effect waves-light btn right" id="submit">Submit</a>
             </div>
         </div>
     </div>
@@ -129,8 +129,26 @@
                                 <label for="password">Password</label>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="about" class="materialize-textarea" data-length="250"></textarea>
+                                <label for="about">About You</label>
+                            </div>
+                        </div>
+
+                        <div class="file-field input-field col s6">
+                            <div>
+                                <input type="file" id="picture">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <i class="material-icons prefix">publish</i>
+                                <input placeholder="Add Image" class="file-path validate" type="text">
+                            </div>
+                        </div>                        
+
                     </form>
-                    <a class="waves-effect waves-light btn right">Create User</a>
+                    <a class="waves-effect waves-light btn right" id="click">Create User</a>
                 </div>
 
             </div>
