@@ -98,7 +98,7 @@
                     <div class="row">
                         <div class="col s6"></div>
                         <div class="col s3">
-                            <a class="waves-effect waves-light btn right">Login</a>
+                            <a class="waves-effect waves-light btn right" id="login">Login</a>
                         </div>
                     </div>
 
@@ -223,56 +223,21 @@
         </div>
 
         <div class="container">
-
+{{#each post}}
             <div class="row">
                 <div class="col s3 m3 l3">
                     <div class="star-rating center">****</div>
-                    <img src="http://1.media.dorkly.cvcdn.com/77/60/04ca81be9375a961d02c217fd706f8d5.jpg" alt="this is a test" class="responsive-img right location-pictures">
+                    <img src="{{this.picture}}" alt="this is a test" class="responsive-img right location-pictures">
                 </div>
 
                 <div class="col s9 m9 l9">
-                    <h4>Location</h4>
-                    <p class="flow-text">This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This
-                        is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is
-                        a test. This is a test. This is a test. </p>
+                    <h4>{{this.locationName}}</h4>
+                    <p class="flow-text">{{this.body}}</p>
                 </div>
             </div>
 
             <div class="divider"></div>
-
-            <div class="row">
-                <div class="col s3 m3 l3">
-                    <div class="star-rating center">****</div>
-                    <img src="http://donthatethegeek.com/wp-content/uploads/2016/06/darth-vader-rogue-one.jpg" alt="this is a test" class="responsive-img right location-pictures">
-                </div>
-
-                <div class="col s9 m9 l9">
-                    <h4>Location</h4>
-                    <p class="flow-text">This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This
-                        is a test. This is a test. This is a test. This is a test. This is a test. This is a test. </p>
-
-                </div>
-
-            </div>
-            <div class="divider"></div>
-
-
-            <div class="row">
-                <div class="col s3 m3 l3">
-                    <div class="star-rating center">****</div>
-                    <img src="https://upload.wikimedia.org/wikipedia/en/7/76/Darth_Vader.jpg" alt="this is a test" class="responsive-img  right location-pictures">
-                </div>
-
-                <div class="col s9 m9 l9">
-                    <h4>Location</h4>
-                    <p class="flow-text">thijsdjfakjdljfiowajeklfjalkjdfioajsdklfjaskldjf;aoiwejlck;jakmalekjadfa dkfj adf asjkdfja djf alsd f
-                        fasodjf jklj e adljf a ejlj ekfja isdjf ae jeijajd fka klj f;aej fakdjf a;kej f;ake f daoifjakjsf
-                        e a;ejf adslkf ad fkajd fe ifjaj fadjfdf adfkdlfd </p>
-
-                </div>
-            </div>
-            <div class="divider"></div>
-
+{{/each}}
         </div>
 
     </div>
