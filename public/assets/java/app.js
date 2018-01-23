@@ -113,13 +113,22 @@ $("#submit").on("click", function(event){
         processData: false,
         contentType: false
       }).then(function(res) {
+        console.log(res);
         var picUrl = res.url;
+        var resize = function (p) {
+            var a = p.split("upload");
+            var b = a[0] + "upload/w_1000,h_1000,c_crop/w_200," + a[1];
+            console.log(b);
+            return b;
+        };
+        var aUrl = resize(picUrl);
+        console.log(picUrl)
     console.log(userInput);
     var userInput = {
         locationName: $("#location_name").val(),
         activity: $("select option:selected").text(),
         body: $("#write-post").val(),
-        picture: picUrl    
+        picture: aUrl    
     };
     console.log(userInput);
     $.ajax({
@@ -155,13 +164,20 @@ $("#click").on("click", function() {
         contentType: false
       }).then(function(res) {
         var picUrl = res.url;
+        var resize = function (p) {
+            var a = p.split("upload");
+            var b = a[0] + "upload/w_1000,h_1000,c_crop/w_200," + a[1];
+            console.log(b);
+            return b;
+        };
+        var aUrl = resize(picUrl);
         var User = {
            name: Name,
            email: Email,
            about: About,
            username: Username,
            password: Password,
-           picture: picUrl
+           picture: aUrl
        };
        console.log(User);
         $.ajax("/user/new", {
@@ -179,5 +195,23 @@ $("#click").on("click", function() {
           var b = a[0];
           return b;
        };
+
+   });
+
+   $("#login").on("click", function() {
+    var Username = $("#login-name").val().trim();
+    var Password = $("#login-password").val().trim();
+    var login = {
+        username: Username,
+        password: Password
+    }
+    $.ajax("/login", {
+        type: "Post",
+        data: login
+    }).then(function(err) {
+        if (err) {
+            console.log(err);
+        }
+    });
 
    });

@@ -41,7 +41,7 @@ module.exports = function(app){
             console.log(dbData);
             bcrypt.compare(req.body.password, dbData.dataValues.password, function(err, response) {
                 // res == true
-                console.log(response);
+                // console.log(response);
                 if(response){
                     var user = {
                         id: dbData.dataValues.id,
