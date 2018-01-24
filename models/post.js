@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: true
         },
-        long: {
+        lng: {
             type: DataTypes.STRING,
             allowNull: true
         },

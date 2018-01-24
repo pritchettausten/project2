@@ -1,5 +1,5 @@
 //API KEY:
-// AIzaSyAkRCGxPbugNrJuV7hLigTJRxIU-F3bTlY
+//AIzaSyAkRCGxPbugNrJuV7hLigTJRxIU-F3bTlY
 
 $(".activity-icon").on("click", function (){
     $(this).toggleClass("z-depth-2");
@@ -75,29 +75,57 @@ $(".activity-icon").on("click", function (){
     // });
  
  });
- 
- //GOOGLE MAPS
- function initMap() {
+
+//GOOGLE MAPS
+function initMap() {
     var uluru = {
-        lat: -25.363,
-        lng: 131.044
+         lat: 39.3210,
+         lng: -111.0937
     };
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: uluru
+         zoom: 6,
+         center: uluru
     });
-    var marker = new google.maps.Marker({
-        position: uluru,
-        map: map
-    });
- }
+ 
+    var geocoder = new google.maps.Geocoder();
+     
+        document.getElementById('submit').addEventListener('click', function() {
+             geocodeAddress(geocoder, map);
+        });
+ 
+    // var marker = new google.maps.Marker({
+    //     position: uluru,
+    //     map: map
+    // });
+ };
+ 
+function geocodeAddress(geocoder, resultsMap, cb) {
+    var address = document.getElementById('location_name').value;
+    geocoder.geocode({'address': address}, function(results, status) {
+      if (status === 'OK') {
+        resultsMap.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+          map: resultsMap,
+          position: results[0].geometry.location
+        });
 
+        var lng = results[0].geometry.location.lng();
+        var lat = results[0].geometry.location.lat();
+
+        addUserData(lat, lng);
+
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+};
+ 
 $('select').material_select();
 
-
-$("#submit").on("click", function(event){
-    event.preventDefault();
-    event.stopPropagation();
+//$("#submit").on("click", function(event)
+function addUserData(lat, lng){
+    //event.preventDefault();
+    //event.stopPropagation();
     var CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/outdoorproject/upload"; 
     var CLOUDINARY_UPLOAD_PRESET = "th8ye3vy";
     var picture = $("#activityPic");
@@ -115,6 +143,7 @@ $("#submit").on("click", function(event){
       }).then(function(res) {
         console.log(res);
         var picUrl = res.url;
+        
         var resize = function (p) {
             var a = p.split("upload");
             var b = a[0] + "upload/w_1000,h_1000,c_crop/w_200," + a[1];
@@ -123,46 +152,51 @@ $("#submit").on("click", function(event){
         };
         var aUrl = resize(picUrl);
         console.log(picUrl)
-    console.log(userInput);
-    var userInput = {
-        locationName: $("#location_name").val(),
-        activity: $("select option:selected").text(),
-        body: $("#write-post").val(),
-        picture: aUrl    
-    };
-    console.log(userInput);
-    $.ajax({
-        type: "POST",
-        url:"/api/posts",
-        data: userInput,
+        console.log(userInput);
+        var userInput = {
+            locationName: $("#location_name").val(),
+            activity: $("select option:selected").text(),
+            body: $("#write-post").val(),
+            lat: lat,
+            lng: lng,
+            picture: aUrl    
+        };
+        console.log(userInput);
+        $.ajax({
+            type: "POST",
+            url:"/api/posts",
+            data: userInput,
+        });
     });
-    });
-});
+};
 
 $("#click").on("click", function() {
     event.preventDefault();
-      var CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/outdoorproject/upload"; 
-      var CLOUDINARY_UPLOAD_PRESET = "th8ye3vy";
+        var CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/outdoorproject/upload"; 
+        var CLOUDINARY_UPLOAD_PRESET = "th8ye3vy";
       
-    
-       var Name = $("#full-name").val().trim();
-       var Email = $("#email").val().trim();
-       var About = $("#about").val().trim();
-       var Password =  $("#password").val().trim();
-       var picture = $("#picture");
-       var file = picture[0].files[0];
-       console.log(picture[0].files[0]);
-       var Username = getUsername(Email);
-       var formData = new FormData();
-       formData.append("file", file);
-       formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+        var Name = $("#full-name").val().trim();
+        var Email = $("#email").val().trim();
+        var About = $("#about").val().trim();
+        var Password =  $("#password").val().trim();
+        var picture = $("#picture");
+        var file = picture[0].files[0];
+
+        console.log(picture[0].files[0]);
+
+        var Username = getUsername(Email);
+        var formData = new FormData();
+
+        formData.append("file", file);
+        formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
     $.ajax({
         url: CLOUDINARY_URL,
         type: "POST",
         data: formData,
         processData: false,
         contentType: false
-      }).then(function(res) {
+    }).then(function(res) {
+        
         var picUrl = res.url;
         var resize = function (p) {
             var a = p.split("upload");
@@ -177,9 +211,12 @@ $("#click").on("click", function() {
            about: About,
            username: Username,
            password: Password,
+ 
+      
            picture: aUrl
        };
        console.log(User);
+
         $.ajax("/user/new", {
             type: "POST",
             data: User
@@ -188,14 +225,56 @@ $("#click").on("click", function() {
                 console.log(err);
             }
         });
-      });
+    });
 
-       function getUsername (g) {
-          var a = g.split("@");
-          var b = a[0];
-          return b;
-       };
+    function getUsername (g) {
+        var a = g.split("@");
+        var b = a[0];
+        return b;
+    };
+});
 
+   
+$("#click").on("click", function() {
+    event.preventDefault();
+    
+    var Name = $("#name").val().trim();
+    var Email = $("#email").val().trim();
+    var About = $("#about").val().trim();
+    var Password =  $("#password").val().trim();
+    var Username = getUsername(Email);
+    var User = {
+        name: Name,
+        email: Email,
+        about: About,
+        username: Username,
+        password: Password
+    };
+    console.log(User);
+    
+    $.ajax("/user/new", {
+        type: "POST",
+        data: User
+    }).then(function(err) {
+        if (err) {
+            console.log(err);
+        }
+    });
+    
+    function pushPic (pic) {};
+    
+    function getUsername (g) {
+        var a = g.split("@");
+        var b = a[0];
+        console.log(a);
+        console.log(b);
+        return b;
+    };
+});
+
+$.get("/", function(arr){
+    console.log(arr);
+})
    });
 
    $("#login").on("click", function() {
@@ -212,8 +291,7 @@ $("#click").on("click", function() {
         if (data) {
             console.log("this Works");
             $("#create").removeClass("hide");
-            $("#loginModal").addClass("hide");
-            
+            $("#loginModal").addClass("hide");    
 
         }
     });

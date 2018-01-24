@@ -3,16 +3,27 @@ var db = require("../models");
 module.exports = function(app){
 
     app.get("/", function(req, res){
-        db.Post.findAll({
-            // where: {
-            //     activity: ,
-            //     include: [db.User]
-            // }
-        }).then(function(dbPost){
+
+        //res.render("index");
+        db.Post.findAll({}).then(function(dbPost){
             var obj = {
                 post: dbPost
             };
+            var arr = [];
+        
+            for (var i = 0; i < obj.post.length; i++) {
+                //console.log(obj.post[i].dataValues);
+                var coord = obj.post[i].dataValues;
+                arr.push(coord);
+                // console.log(coord);
+                // console.log(obj.post[i].locationName);
+                // console.log(obj.post[i].lat);
+                // console.log(obj.post[i].lng);
+                // console.log("----------------------") 
+            }
+            //console.log(arr);
             res.render("index", obj);
+
         });
     });
 
