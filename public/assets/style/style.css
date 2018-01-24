@@ -49,3 +49,49 @@
     height: 400px;
     background-color: grey;
   }
+
+  body{
+    background-color: white;
+ }
+ .parallax-container{
+    height: 330px;
+    
+ }
+ nav{
+    background: linear-gradient(to bottom right, rgb(226, 62, 33), purple);
+ 
+ }
+ .divider{
+    height: 2px;
+    background: linear-gradient(to bottom right, rgb(226, 62, 33), purple);
+ }
+ #profile-pic{
+    position: absolute;
+    margin-top: -10%;
+    margin-left: 5%;
+    width: 15%;
+    z-index: 1;
+   
+ }
+ #image-box{
+    border-radius: 10%;  
+ }
+ #bio{
+    height: auto;
+    margin-top: 7%;
+    margin-bottom: 7%;
+ }
+ #about-me-edit{
+    float: right;
+ }
+ #box{
+    margin-top: 5%;
+    margin-bottom: 5%;
+ }
+ .modal-content{
+    height: 300px;
+ }
+ .page-footer{
+    background: linear-gradient(to bottom right, rgb(226, 62, 33), purple);
+    margin-bottom: 0%;
+ }
