@@ -4,10 +4,12 @@
                 <a href="#!" class="brand-logo">Logo</a>
                 <ul class="right hide-on-med-and-down">
                     <li>
-                        <a class="modal-trigger" href="#create-modal">Create Place</a>
+                        <a class="modal-trigger hide" id="create" href="#create-modal">Create Place</a>
                     </li>
                     <li>
-                        <a class="modal-trigger" href="#login-modal">Login</a>
+                        <a class="modal-trigger" id="loginModal" href="#login-modal">Login</a>
+                        {{!-- <a class="hide" id="welcome" href="/user">Welcome {{}}</a> --}}
+
 
                     </li>
                 </ul>
@@ -55,7 +57,7 @@
                         </div>
                     </div>
                 </form>
-                <a class="waves-effect waves-light btn right" id="submit">Submit</a>
+                <a href="#!" class="modal-action modal-close waves-effect waves-light btn right" id="submit">Submit</a>
             </div>
         </div>
     </div>
@@ -98,7 +100,7 @@
                     <div class="row">
                         <div class="col s6"></div>
                         <div class="col s3">
-                            <a class="waves-effect waves-light btn right" id="login">Login</a>
+                            <a href="#!" class="modal-action modal-close waves-effect waves-light btn right" id="login">Login</a>
                         </div>
                     </div>
 
@@ -148,7 +150,8 @@
                         </div>                        
 
                     </form>
-                    <a class="waves-effect waves-light btn right" id="click">Create User</a>
+                    <a href="/" class="waves-effect waves-light btn right" id="click">Create User</a>
+                    <a href="/user" class="waves-effect waves-light btn right" id="user">User</a>
                 </div>
 
             </div>
@@ -276,3 +279,5 @@
             </div>
         </div>
     </footer>
+    <script async defer src="https://maps.googleapis.com/maps/api/jskey=AIzaSyDygdwwtnzKqzpBIkaxG0U7Oz3fEs20RRE&callback=initMap"></script>
+    

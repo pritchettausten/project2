@@ -10,7 +10,7 @@
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>
-                        <a href="index.html" class="btn-floating btn-large halfway-fab waves-effect waves-light red">
+                        <a href="/" class="btn-floating btn-large halfway-fab waves-effect waves-light red">
                             <i class="material-icons">home</i>
                         </a>
                     </li>
@@ -20,13 +20,15 @@
     </nav>
 <!-- Profile Picture -->
     <div id="profile-pic">
-        <img class="responsive-img" id="image-box" src="assets/images/user.jpg">
+        <img class="responsive-img" id="image-box" src="{{user.picture}}">
         <h4 class="flow-text">
             <b>Name</b>
+            <p>{{user.name}}</p>
             <div class="divider"></div>
             <br>
             <br>
             <b>Username</b>
+            <p>{{user.username}}</p>
             <div class="divider"></div>
         </h4>
     </div>
@@ -64,11 +66,7 @@
                             <br>
                             <!-- About Me Card Content -->
                             <span class="black-text">
-                                EXAMPLE TEXT Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
-                                sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam
-                                felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
-                                Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
-                                ut, imperdiet a,
+                                {{user.about}}
                             </span>
                         </div>
                     </div>

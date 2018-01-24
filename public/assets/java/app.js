@@ -208,10 +208,29 @@ $("#click").on("click", function() {
     $.ajax("/login", {
         type: "Post",
         data: login
-    }).then(function(err) {
-        if (err) {
-            console.log(err);
+    }).then(function(data) {
+        if (data) {
+            console.log("this Works");
+            $("#create").removeClass("hide");
+            $("#loginModal").addClass("hide");
+            
+
         }
     });
 
    });
+
+//    $("#user").on("click", function() {
+//         var Id = 1;
+//         var data = {
+//             id: Id
+//         };
+//         $.ajax("/user", {
+//             type: "Get",
+//             data: data
+//         }).then(function(err) {
+//             if (err) {
+//                 console.log(err);
+//             }
+//         });
+//    });
