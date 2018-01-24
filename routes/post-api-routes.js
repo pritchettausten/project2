@@ -12,9 +12,19 @@ module.exports = function(app){
             var obj = {
                 post: dbPost
             };
-            res.render("logged", obj);
+            res.render("index", obj);
         });
     });
+
+    // app.get("/logged", function(req, res){
+    //     db.Post.findAll({
+    //     }).then(function(dbPost){
+    //         var obj = {
+    //             post: dbPost
+    //         };
+    //         res.render("logged", obj);
+    //     });
+    // });
 
     app.get("/api/posts/:activity", function(req, res){
         db.Post.findAll({
