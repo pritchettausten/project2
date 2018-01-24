@@ -141,16 +141,25 @@ function addUserData(lat, lng){
         processData: false,
         contentType: false
       }).then(function(res) {
+        console.log(res);
         var picUrl = res.url;
-        //console.log(userInput);
-
+        
+        var resize = function (p) {
+            var a = p.split("upload");
+            var b = a[0] + "upload/w_1000,h_1000,c_crop/w_200," + a[1];
+            console.log(b);
+            return b;
+        };
+        var aUrl = resize(picUrl);
+        console.log(picUrl)
+        console.log(userInput);
         var userInput = {
             locationName: $("#location_name").val(),
             activity: $("select option:selected").text(),
             body: $("#write-post").val(),
             lat: lat,
             lng: lng,
-            picture: picUrl    
+            picture: aUrl    
         };
         console.log(userInput);
         $.ajax({
@@ -189,17 +198,25 @@ $("#click").on("click", function() {
     }).then(function(res) {
         
         var picUrl = res.url;
+        var resize = function (p) {
+            var a = p.split("upload");
+            var b = a[0] + "upload/w_1000,h_1000,c_crop/w_200," + a[1];
+            console.log(b);
+            return b;
+        };
+        var aUrl = resize(picUrl);
         var User = {
            name: Name,
            email: Email,
            about: About,
            username: Username,
            password: Password,
-           picture: picUrl
-        };
-        
-        console.log(User);
-        
+ 
+      
+           picture: aUrl
+       };
+       console.log(User);
+
         $.ajax("/user/new", {
             type: "POST",
             data: User
@@ -258,4 +275,40 @@ $("#click").on("click", function() {
 $.get("/", function(arr){
     console.log(arr);
 })
+   });
 
+   $("#login").on("click", function() {
+    var Username = $("#login-name").val().trim();
+    var Password = $("#login-password").val().trim();
+    var login = {
+        username: Username,
+        password: Password
+    }
+    $.ajax("/login", {
+        type: "Post",
+        data: login
+    }).then(function(data) {
+        if (data) {
+            console.log("this Works");
+            $("#create").removeClass("hide");
+            $("#loginModal").addClass("hide");    
+
+        }
+    });
+
+   });
+
+//    $("#user").on("click", function() {
+//         var Id = 1;
+//         var data = {
+//             id: Id
+//         };
+//         $.ajax("/user", {
+//             type: "Get",
+//             data: data
+//         }).then(function(err) {
+//             if (err) {
+//                 console.log(err);
+//             }
+//         });
+//    });

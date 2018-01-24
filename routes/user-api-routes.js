@@ -2,6 +2,19 @@ var db = require("../models");
 var bcrypt = require("bcrypt");
 
 module.exports = function(app){
+    app.get("/user", function(req,res) {
+        db.User.findOne({
+            where: {
+                id: 1
+            }
+        }).then(function(values) {
+            console.log(values);
+            var obj = {
+                user: values
+            }
+            res.render("profile", obj);
+        });
+    });
 
     app.post("/user/new", function(req, res) {
         bcrypt.genSalt(10, function(err, salt) {
@@ -20,9 +33,7 @@ module.exports = function(app){
                         password: hash,
                         picture: req.body.picture
                     }).then(function(dbUser) {
-                    
                         res.json(dbUser);
-                    //console.log(req.body);
                     });
                     
                 }
@@ -41,7 +52,7 @@ module.exports = function(app){
             console.log(dbData);
             bcrypt.compare(req.body.password, dbData.dataValues.password, function(err, response) {
                 // res == true
-                console.log(response);
+                // console.log(response);
                 if(response){
                     var user = {
                         id: dbData.dataValues.id,

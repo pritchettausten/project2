@@ -3,7 +3,8 @@ var db = require("../models");
 module.exports = function(app){
 
     app.get("/", function(req, res){
-        res.render("index");
+
+        //res.render("index");
         db.Post.findAll({}).then(function(dbPost){
             var obj = {
                 post: dbPost
@@ -21,9 +22,20 @@ module.exports = function(app){
                 // console.log("----------------------") 
             }
             //console.log(arr);
-            //res.render("index", arr);
+            res.render("index", obj);
+
         });
     });
+
+    // app.get("/logged", function(req, res){
+    //     db.Post.findAll({
+    //     }).then(function(dbPost){
+    //         var obj = {
+    //             post: dbPost
+    //         };
+    //         res.render("logged", obj);
+    //     });
+    // });
 
     app.get("/api/posts/:activity", function(req, res){
         db.Post.findAll({
@@ -31,7 +43,6 @@ module.exports = function(app){
                 activity: req.params.activity,
                 include: [db.User]
             }
-
         }).then(function(dbPost){
             var obj = {
                 post: dbPost
