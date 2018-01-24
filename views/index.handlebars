@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </form>
-                <a class="waves-effect waves-light btn right" id="submit">Submit</a>
+                <a href="#!" class="modal-action modal-close waves-effect waves-light btn right" id="submit">Submit</a>
             </div>
         </div>
     </div>
@@ -98,7 +98,7 @@
                     <div class="row">
                         <div class="col s6"></div>
                         <div class="col s3">
-                            <a class="waves-effect waves-light btn right">Login</a>
+                            <a href="#!" class="modal-action modal-close waves-effect waves-light btn right">Login</a>
                         </div>
                     </div>
 
@@ -148,32 +148,21 @@
                         </div>                        
 
                     </form>
-                    <a class="waves-effect waves-light btn right" id="click">Create User</a>
+                    <a href="#!" class="modal-action modal-close waves-effect waves-light btn right" id="click">Create User</a>
                 </div>
-
             </div>
         </div>
-
     </div>
-
-
-
-
-
-    
-
 
     <div class="row">
 
         <div class="col s12 m12 l12 center" style="margin-top: 15px;">
 
-            <h3>My Google Maps Demo</h3>
+            {{!-- <h3>My Google Maps Demo</h3> --}}
             <div id="map"></div>
 
         </div>
         <div class="col s12 m12 l12 grey" style="margin-top: 10px;">
-
-
 
             <div class="col m2 l2"></div>
             <div class="col m1 l1 hoverable z-depth-2 activity-icon">
@@ -311,3 +300,6 @@
             </div>
         </div>
     </footer>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDygdwwtnzKqzpBIkaxG0U7Oz3fEs20RRE&callback=initMap">
+    </script>
