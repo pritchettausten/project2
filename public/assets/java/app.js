@@ -82,22 +82,42 @@ function initMap() {
          lat: 39.3210,
          lng: -111.0937
     };
-    var map = new google.maps.Map(document.getElementById('map'), {
+   var map = new google.maps.Map(document.getElementById('map'), {
          zoom: 6,
          center: uluru
     });
- 
-    var geocoder = new google.maps.Geocoder();
-     
+    infowindow = new google.maps.InfoWindow();
+   var geocoder = new google.maps.Geocoder();
         document.getElementById('submit').addEventListener('click', function() {
              geocodeAddress(geocoder, map);
         });
- 
-    // var marker = new google.maps.Marker({
-    //     position: uluru,
-    //     map: map
-    // });
- };
+
+        $.ajax("/coord", {
+            type: "Get",
+        }).then(function(data) {
+            // console.log(data);
+            for (let i = 0; i < data.length; i++) {
+              var newMark = {
+                lat: parseFloat(data[i].lat),
+                lng: parseFloat(data[i].lng)
+            };
+            var marker = new google.maps.Marker({
+                position: newMark,
+                map: map
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(
+                                    data[i].locationName 
+                                    + "<hr>Activity: " + data[i].activity  
+                                    + "<br>" + data[i].body);
+                infowindow.open(map, this);
+              });  
+               
+           }
+            
+       });
+    
+};
  
 function geocodeAddress(geocoder, resultsMap, cb) {
     var address = document.getElementById('location_name').value;
@@ -272,12 +292,9 @@ $("#click").on("click", function() {
     };
 });
 
-$.get("/", function(arr){
-    console.log(arr);
-})
-   });
 
-   $("#login").on("click", function() {
+
+$("#login").on("click", function() {
     var Username = $("#login-name").val().trim();
     var Password = $("#login-password").val().trim();
     var login = {
@@ -291,12 +308,13 @@ $.get("/", function(arr){
         if (data) {
             console.log("this Works");
             $("#create").removeClass("hide");
+            $("#profile").removeClass("hide");
             $("#loginModal").addClass("hide");    
 
         }
     });
 
-   });
+});
 
 //    $("#user").on("click", function() {
 //         var Id = 1;

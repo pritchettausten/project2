@@ -10,7 +10,7 @@
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>
-                        <a href="/" class="btn-floating btn-large halfway-fab waves-effect waves-light red">
+                        <a href="index.html" class="btn-floating btn-large halfway-fab waves-effect waves-light  green darken-3">
                             <i class="material-icons">home</i>
                         </a>
                     </li>
@@ -20,15 +20,13 @@
     </nav>
 <!-- Profile Picture -->
     <div id="profile-pic">
-        <img class="responsive-img" id="image-box" src="{{user.picture}}">
+        <img class="responsive-img" id="image-box" src="assets/images/user.jpg">
         <h4 class="flow-text">
             <b>Name</b>
-            <p>{{user.name}}</p>
             <div class="divider"></div>
             <br>
             <br>
             <b>Username</b>
-            <p>{{user.username}}</p>
             <div class="divider"></div>
         </h4>
     </div>
@@ -43,7 +41,7 @@
                                 <b>About Me</b>
                                 <!-- About Me Model Start -->
                                 <!-- Modal Trigger -->
-                                <a class="waves-effect waves-light btn modal-trigger red" href="#modal1" id="about-me-edit">Edit</a>
+                                <a class="waves-effect waves-light btn modal-trigger  green darken-3" href="#modal1" id="about-me-edit">Edit</a>
                                 <!-- Modal Structure -->
                                 <div id="modal1" class="modal">
                                     <div class="modal-content">
@@ -66,7 +64,11 @@
                             <br>
                             <!-- About Me Card Content -->
                             <span class="black-text">
-                                {{user.about}}
+                                EXAMPLE TEXT Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
+                                sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam
+                                felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+                                Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
+                                ut, imperdiet a,
                             </span>
                         </div>
                     </div>
@@ -78,7 +80,7 @@
     <!-- Status Modal Container -->
     <div class="container" id="box">
         <!--Status Modal Trigger -->
-        <a class="waves-effect waves-light btn modal-trigger red" href="#modal2">Status Update</a>
+        <a class="waves-effect waves-light btn modal-trigger  green darken-3" href="#modal2">Create Post</a>
         <!-- Status Modal Structure -->
         <div id="modal2" class="modal">
             <div class="modal-content">
@@ -94,7 +96,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a class="waves-effect waves-light btn red">
+                <a class="waves-effect waves-light btn green darken-3">
                     <i class="material-icons right">create</i>Post</a>
             </div>
         </div>
@@ -120,26 +122,44 @@
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
-                    <h5 class="white-text">Footer Content</h5>
-                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                    <h5 class="white-text">Social Media</h5>
+                    
                 </div>
                 <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Social Media</h5>
+                    <h5 class="white-text">National Park Information</h5>
                     <ul>
                         <li>
-                            <a class="grey-text text-lighten-3" href="#!">Link 1</a>
+                            <a class="grey-text text-lighten-3" href="https://www.visitutah.com/places-to-go/most-visited-parks/the-mighty-5">The Mighty 5</a>
                         </li>
                         <li>
-                            <a class="grey-text text-lighten-3" href="#!">Link 2</a>
+                            <a class="grey-text text-lighten-3" href="https://utah.com/national-parks">Utah.com</a>
                         </li>
                         <li>
-                            <a class="grey-text text-lighten-3" href="#!">Link 3</a>
+                            <a class="grey-text text-lighten-3" href="https://www.nationalgeographic.com/travel/road-trips/united-states/utah-national-parks/">National Geographic Road Trip Utah</a>
                         </li>
                         <li>
-                            <a class="grey-text text-lighten-3" href="#!">Link 4</a>
+                            <a class="grey-text text-lighten-3" href="https://www.nps.gov/state/ut/index.htm">National Park Service</a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="https://www.skiutah.com/">Ski Utah</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
+        <div class="footer-copyright">
+            <div class="container">
+            © 2014 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
     </footer>
+    <!-- Page Footer End -->
+    <!-- Display content -->
+    <!--Import jQuery before materialize.js-->
+    <!-- Jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <!-- Compiled and minified Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="assets/java/app.js"></script>
