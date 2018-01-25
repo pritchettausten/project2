@@ -35,8 +35,8 @@ module.exports = function(app){
             // console.log("These are the values");
             // console.log(results.dataValues.Posts[0].dataValues);
             var arr = [];
-            for (let 0 = 0; 0 < results.dataValues.Posts.length; 0++) {
-                arr.push(results.dataValues.Posts[0].dataValues);
+            for (let i = 0; i < results.dataValues.Posts.length; i++) {
+                arr.push(results.dataValues.Posts[i].dataValues);
             }
             console.log(arr);
             var obj = {
