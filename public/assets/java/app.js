@@ -261,22 +261,22 @@ function addUserData(lat, lng){
 
 $("#click").on("click", function() {
     event.preventDefault();
-        var CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/outdoorproject/upload"; 
+        var CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/outdoorproject/upload";
         var CLOUDINARY_UPLOAD_PRESET = "th8ye3vy";
       
-        var Name = $("#full-name").val().trim();
+       var Name = $("#full-name").val().trim();
         var Email = $("#email").val().trim();
         var About = $("#about").val().trim();
         var Password =  $("#password").val().trim();
         var picture = $("#picture");
         var file = picture[0].files[0];
 
-        console.log(picture[0].files[0]);
+       console.log(picture[0].files[0]);
 
-        var Username = getUsername(Email);
+       var Username = getUsername(Email);
         var formData = new FormData();
 
-        formData.append("file", file);
+       formData.append("file", file);
         formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
     $.ajax({
         url: CLOUDINARY_URL,
@@ -286,7 +286,7 @@ $("#click").on("click", function() {
         contentType: false
     }).then(function(res) {
         
-        var picUrl = res.url;
+       var picUrl = res.url;
         var resize = function (p) {
             var a = p.split("upload");
             var b = a[0] + "upload/w_1000,h_1000,c_crop/w_200," + a[1];
@@ -300,23 +300,32 @@ $("#click").on("click", function() {
            about: About,
            username: Username,
            password: Password,
- 
-      
-           picture: aUrl
+
+     
+          picture: aUrl
        };
        console.log(User);
 
-        $.ajax("/user/new", {
+       $.ajax("/user/new", {
             type: "POST",
             data: User
-        }).then(function(err) {
-            if (err) {
-                console.log(err);
+        }).then(function(data) {
+            var U = Username;
+            var P = Password;
+            var login = {
+                username: U,
+                password: P
             }
+            $.ajax("/login", {
+                type: "Post",
+                data: login
+            }).then(function(data) {
+                location.reload();
+            });
         });
     });
 
-    function getUsername (g) {
+   function getUsername (g) {
         var a = g.split("@");
         var b = a[0];
         return b;
