@@ -91,46 +91,47 @@ $(".activity-icon").on("click", function (){
  });
 
 //GOOGLE MAPS
-function initMap() {
+function initMap(data, cb) {
     var uluru = {
          lat: 39.3210,
          lng: -111.0937
     };
-   var map = new google.maps.Map(document.getElementById('map'), {
+    var map = new google.maps.Map(document.getElementById('map'), {
          zoom: 6,
          center: uluru
     });
     infowindow = new google.maps.InfoWindow();
-   var geocoder = new google.maps.Geocoder();
-        document.getElementById('submit').addEventListener('click', function() {
-             geocodeAddress(geocoder, map);
-        });
-
-        $.ajax("/coord", {
-            type: "Get",
-        }).then(function(data) {
-            // console.log(data);
-            for (let i = 0; i < data.length; i++) {
-              var newMark = {
-                lat: parseFloat(data[i].lat),
-                lng: parseFloat(data[i].lng)
-            };
-            var marker = new google.maps.Marker({
-                position: newMark,
-                map: map
-            });
-            google.maps.event.addListener(marker, 'click', function() {
-                infowindow.setContent(
-                                    data[i].locationName 
-                                    + "<hr>Activity: " + data[i].activity  
-                                    + "<br>" + data[i].body);
-                infowindow.open(map, this);
-              });  
-               
-           }
-            
-       });
+    var geocoder = new google.maps.Geocoder();
     
+    document.getElementById('submit').addEventListener('click', function() {
+            geocodeAddress(geocoder, map);
+    });
+
+    populateMap(map);
+    //filterMap(map);
+    
+    // $.ajax("/coord", {
+    //     type: "Get",
+    // }).then(function(data) {
+    //     // console.log(data);
+    //     for (let i = 0; i < data.length; i++) {
+    //         var newMark = {
+    //         lat: parseFloat(data[i].lat),
+    //         lng: parseFloat(data[i].lng)
+    //     };
+    //     var marker = new google.maps.Marker({
+    //         position: newMark,
+    //         map: map
+    //     });
+    //     google.maps.event.addListener(marker, 'click', function() {
+    //         infowindow.setContent(
+    //             data[i].locationName 
+    //             + "<hr>Activity: " + data[i].activity  
+    //             + "<br>" + data[i].body);
+    //         infowindow.open(map, this);
+    //         });       
+    //     }     
+    // });   
 };
  
 function geocodeAddress(geocoder, resultsMap, cb) {
@@ -154,6 +155,56 @@ function geocodeAddress(geocoder, resultsMap, cb) {
     });
 };
  
+function populateMap(map){
+    $.ajax("/coord", {
+        type: "Get",
+    }).then(function(data) {
+        // console.log(data);
+        for (let i = 0; i < data.length; i++) {
+            var newMark = {
+            lat: parseFloat(data[i].lat),
+            lng: parseFloat(data[i].lng)
+        };
+        var marker = new google.maps.Marker({
+            position: newMark,
+            map: map
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(
+                data[i].locationName 
+                + "<hr>Activity: " + data[i].activity  
+                + "<br>" + data[i].body);
+            infowindow.open(map, this);
+            });       
+        }     
+    });   
+}
+
+function filterMap(map){
+    $.ajax("/filter", {
+        type: "Get",
+    }).then(function(data) {
+        // console.log(data);
+        for (let i = 0; i < data.length; i++) {
+            var newMark = {
+            lat: parseFloat(data[i].lat),
+            lng: parseFloat(data[i].lng)
+        };
+        var marker = new google.maps.Marker({
+            position: newMark,
+            map: map
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(
+                data[i].locationName 
+                + "<hr>Activity: " + data[i].activity  
+                + "<br>" + data[i].body);
+            infowindow.open(map, this);
+            });       
+        }     
+    });   
+}
+
 $('select').material_select();
 
 //$("#submit").on("click", function(event)
