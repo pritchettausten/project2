@@ -11,11 +11,13 @@ var db        = {};
 var config = {
   "username": "sou66amol104lhwd",
   "password": "uiucwj0m7whg31qj",
+  "database": "ivzjw729o9fs16y0"
   "host": "alv4v3hlsipxnujn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+  "port": 3306
   "dialect": "mysql"
 };
 
-if (config.use_env_variable) {
+if (process.env.JAWSDB_URL) {
   var sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
