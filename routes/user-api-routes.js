@@ -2,19 +2,76 @@ var db = require("../models");
 var bcrypt = require("bcrypt");
 
 module.exports = function(app){
-    app.get("/user", function(req,res) {
+    
+    // app.get("/user/:id", function(req, res) {
+    //     db.User.findOne({
+    //         where: {
+    //             id: req.params.id
+    //         }
+    //             // include: [{
+    //             //     model: db.Post,
+    //             //     where: {
+    //             //         Userid: req.params.id
+    //             //     }
+    //             //    }] 
+    //     }).then(function(values) {
+    //         console.log(values.Posts);
+    //         var obj = {
+    //             user: values
+    //         }
+    //         res.render("profile");
+    //     });
+    // });
+    app.get("/user/:id", function(req,res) {
+        var param = parseInt(req.params.id);
         db.User.findOne({
-            where: {
-                id: 1
+            include: [{
+              model: db.Post,
+              where: {
+              Userid: param
+           }
+          }] 
+        }).then(function(results) {
+            // console.log("These are the values");
+            // console.log(results.dataValues.Posts[0].dataValues);
+            var arr = [];
+            for (let i = 0; i < results.dataValues.Posts.length; i++) {
+                arr.push(results.dataValues.Posts[0].dataValues);
             }
-        }).then(function(values) {
-            console.log(values);
+            console.log(arr);
             var obj = {
-                user: values
+                user: results.dataValues,
+                post: arr
             }
             res.render("profile", obj);
         });
     });
+
+    app.post("/logout", function(req, res) {
+        console.log(req.body);
+        db.User.update({logged: false}, {
+            where: {
+                id: req.body.id
+            },
+        }).then(function(data) {
+            console.log(data);
+            res.json(data);
+        }); 
+    });
+
+    app.get("/auth", function(req, res) {
+        db.User.findOne({
+            where: {
+                logged: true
+            }
+        }).then(function(response) {
+            if(response) {
+                res.json(response);
+            }
+        })
+    });
+
+    
 
     app.post("/user/new", function(req, res) {
         bcrypt.genSalt(10, function(err, salt) {
@@ -61,7 +118,14 @@ module.exports = function(app){
                         username: dbData.dataValues.username,
                         picture: dbData.dataValues.picture
                     }
+                    db.User.update({logged: true}, {
+                    where: {
+                        id: user.id
+                    },
+                }).then(function(data) {
+                    console.log("logged In");
                     res.json(user);
+                }); 
                 }
                 else{
                     res.status(404).json("Check your username and password.")

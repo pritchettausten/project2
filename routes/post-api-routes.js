@@ -58,6 +58,7 @@ module.exports = function(app){
     //         res.render("logged", obj);
     //     });
     // });
+    
 
     app.get("/:activity", function(req, res){
         console.log(req.params.activity);

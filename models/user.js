@@ -29,6 +29,10 @@
             type: DataTypes.STRING,
             allowNull: true
         },
+        logged: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false 
+        }
         
     });
 
