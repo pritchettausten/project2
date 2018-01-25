@@ -92,6 +92,6 @@ module.exports = function(app){
     })
 
     app.all('*', function(req, res) {
-        res.redirect("/");
-      });
+        res.redirect("https://glacial-river-83546.herokuapp.com/");
+    });
 };
