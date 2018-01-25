@@ -333,42 +333,42 @@ $("#click").on("click", function() {
 });
 
    
-$("#click").on("click", function() {
-    event.preventDefault();
+// $("#click").on("click", function() {
+//     event.preventDefault();
     
-    var Name = $("#name").val().trim();
-    var Email = $("#email").val().trim();
-    var About = $("#about").val().trim();
-    var Password =  $("#password").val().trim();
-    var Username = getUsername(Email);
-    var User = {
-        name: Name,
-        email: Email,
-        about: About,
-        username: Username,
-        password: Password
-    };
-    console.log(User);
+//     var Name = $("#name").val().trim();
+//     var Email = $("#email").val().trim();
+//     var About = $("#about").val().trim();
+//     var Password =  $("#password").val().trim();
+//     var Username = getUsername(Email);
+//     var User = {
+//         name: Name,
+//         email: Email,
+//         about: About,
+//         username: Username,
+//         password: Password
+//     };
+//     console.log(User);
     
-    $.ajax("/user/new", {
-        type: "POST",
-        data: User
-    }).then(function(err) {
-        if (err) {
-            console.log(err);
-        }
-    });
+//     $.ajax("/user/new", {
+//         type: "POST",
+//         data: User
+//     }).then(function(err) {
+//         if (err) {
+//             console.log(err);
+//         }
+//     });
     
-    function pushPic (pic) {};
+//     function pushPic (pic) {};
     
-    function getUsername (g) {
-        var a = g.split("@");
-        var b = a[0];
-        console.log(a);
-        console.log(b);
-        return b;
-    };
-});
+//     function getUsername (g) {
+//         var a = g.split("@");
+//         var b = a[0];
+//         console.log(a);
+//         console.log(b);
+//         return b;
+//     };
+// });
 
 
 
