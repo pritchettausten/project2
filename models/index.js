@@ -11,9 +11,9 @@ var db        = {};
 var config = {
   "username": "sou66amol104lhwd",
   "password": "uiucwj0m7whg31qj",
-  "database": "ivzjw729o9fs16y0"
+  "database": "ivzjw729o9fs16y0",
   "host": "alv4v3hlsipxnujn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-  "port": 3306
+  "port": 3306,
   "dialect": "mysql"
 };
 
