@@ -90,4 +90,8 @@ module.exports = function(app){
             res.json(dbPost);
         });
     })
+
+    app.all('*', function(req, res) {
+        res.redirect("/");
+      });
 };
