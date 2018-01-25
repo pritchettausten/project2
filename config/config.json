@@ -15,11 +15,10 @@
       "dialect": "mysql"
     },
     "production": {
-      "username": "root",
+      "username": null,
       "password": null,
-      "database": "JAWSDB_URL",
-      "host": "127.0.0.1",
-      "dialect": "mysql"
+      "use_env_variable": "DATABASE_URL",
+      "dialect": "postgres"
     }
   }
   
