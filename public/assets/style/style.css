@@ -42,10 +42,16 @@
 }
 body{
     background-color: white;
+
     font-family: 'Rokkitt', serif;
 }
  
-nav{
+ /* .parallax-container{
+    height: 330px;
+    
+ } */
+ nav{
+
     background: linear-gradient(to bottom right, rgb(226, 62, 33), purple);
  
 }

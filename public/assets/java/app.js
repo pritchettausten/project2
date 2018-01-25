@@ -1,10 +1,12 @@
 //API KEY:
 //AIzaSyAkRCGxPbugNrJuV7hLigTJRxIU-F3bTlY
-
+var userId;
 $(".activity-icon").on("click", function (){
     $(this).toggleClass("z-depth-2");
     console.log("is it working?")
  });
+
+ 
  
  //initialize parallax
  $(document).ready(function () {
@@ -14,7 +16,19 @@ $(".activity-icon").on("click", function (){
  //initialize tabs
     $('ul.tabs').tabs();
  
- 
+    $.ajax("/auth", {
+        type: "get",
+    }).then(function(data) {
+        if (data) {
+            userId = data.id;
+            console.log("I'm logged in");
+            $("#create").removeClass("hide");
+            $("#logout").removeClass("hide");
+            $("#profile").removeClass("hide");
+            $("#loginModal").addClass("hide");
+            $("#profile").attr("href", "/user/"+userId);
+        }
+    });
     //pushpin initialization
     // $('.stick-bar').pushpin({
     //     top: 565,
@@ -153,7 +167,7 @@ function addUserData(lat, lng){
     var formData = new FormData();
        formData.append("file", file);
        formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
-    console.log(file);
+    // console.log(file);
     $.ajax({
         url: CLOUDINARY_URL,
         type: "POST",
@@ -161,7 +175,7 @@ function addUserData(lat, lng){
         processData: false,
         contentType: false
       }).then(function(res) {
-        console.log(res);
+        // console.log(res);
         var picUrl = res.url;
         
         var resize = function (p) {
@@ -171,22 +185,26 @@ function addUserData(lat, lng){
             return b;
         };
         var aUrl = resize(picUrl);
-        console.log(picUrl)
-        console.log(userInput);
+        // console.log(picUrl)
+        // console.log(userInput);
+        console.log(userId);
         var userInput = {
             locationName: $("#location_name").val(),
             activity: $("select option:selected").text(),
             body: $("#write-post").val(),
             lat: lat,
             lng: lng,
-            picture: aUrl    
+            picture: aUrl,
+            UserId: userId    
         };
-        console.log(userInput);
+        // console.log(userInput);
         $.ajax({
             type: "POST",
             url:"/api/posts",
             data: userInput,
-        });
+        }).then(function(data){
+            location.reload();
+        })
     });
 };
 
@@ -305,15 +323,27 @@ $("#login").on("click", function() {
         type: "Post",
         data: login
     }).then(function(data) {
-        if (data) {
-            console.log("this Works");
-            $("#create").removeClass("hide");
-            $("#profile").removeClass("hide");
-            $("#loginModal").addClass("hide");    
-
-        }
+        // if (data) {
+        //     console.log("this Works");
+        //     $("#create").removeClass("hide");
+        //     $("#profile").removeClass("hide");
+        //     $("#loginModal").addClass("hide");    
+        // }
+        location.reload();
     });
 
+});
+
+$("#logout").on("click", function() {
+    var logout = {
+        id: userId
+    };
+    $.ajax("/logout", {
+        type: "Post",
+        data: logout
+    }).then(function(res) {
+        location.reload();
+    });
 });
 
 //    $("#user").on("click", function() {
@@ -330,3 +360,4 @@ $("#login").on("click", function() {
 //             }
 //         });
 //    });
+
