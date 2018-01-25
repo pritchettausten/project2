@@ -27,7 +27,7 @@ module.exports = function(app){
         });
     });
 
-    app.get("/coord", function(req, res){
+    app.get("/coord/:activity", function(req, res){
         db.Post.findAll({
         }).then(function(dbPost){
             var obj = {
@@ -68,11 +68,23 @@ module.exports = function(app){
                 //include: [db.User]
             }
         }).then(function(dbPost){
-            console.log(dbPost);
             var obj = {
-                post: dbPost
+                post: dbPost,
             };
+            var arr = [];
+            for (var i = 0; i < obj.post.length; i++) {
+                var coord = obj.post[i].dataValues;
+                console.log(coord.lat);
+                console.log(coord.lng);
+                var a = {
+                    lat: coord.lat,
+                    lng: coord.lng
+                }
+                arr.push(a);
+            }
+            console.log(arr);
             res.render("index", obj);
+            //res.json(dbPost);
         })
     });
 
