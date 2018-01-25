@@ -22,7 +22,7 @@ require("./routes/user-api-routes.js")(app);
 require("./routes/post-api-routes.js")(app);
 
 db.sequelize.sync(
-  //{ force: true }
+  // { force: true }
 ).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);

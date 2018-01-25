@@ -1,7 +1,6 @@
-
-    <div class="parallax-container">
+<div class="parallax-container">
         <div class="parallax">
-            <img src="assets/images/hike2.jpg">
+            <img src="/assets/images/hike2.jpg">
         </div>
     </div>
     <!-- Navigation Bar -->
@@ -10,7 +9,7 @@
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>
-                        <a href="index.html" class="btn-floating btn-large halfway-fab waves-effect waves-light  green darken-3">
+                        <a href="/" class="btn-floating btn-large halfway-fab waves-effect waves-light  green darken-3">
                             <i class="material-icons">home</i>
                         </a>
                     </li>
@@ -20,13 +19,15 @@
     </nav>
 <!-- Profile Picture -->
     <div id="profile-pic">
-        <img class="responsive-img" id="image-box" src="assets/images/user.jpg">
+        <img class="responsive-img" id="image-box" src="{{user.picture}}">
         <h4 class="flow-text">
             <b>Name</b>
+            <p>{{user.name}}</p>
             <div class="divider"></div>
             <br>
             <br>
             <b>Username</b>
+            <p>{{user.username}}</p>
             <div class="divider"></div>
         </h4>
     </div>
@@ -64,11 +65,7 @@
                             <br>
                             <!-- About Me Card Content -->
                             <span class="black-text">
-                                EXAMPLE TEXT Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
-                                sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam
-                                felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
-                                Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
-                                ut, imperdiet a,
+                                {{user.about}}
                             </span>
                         </div>
                     </div>
@@ -103,19 +100,49 @@
     </div>
     <!-- StatusModal Container End -->
     <!-- Status Content within Card -->
+ 
+          <div class="container">
+{{#each post}}
+            <div class="row">
+                <div class="col s3 m3 l3">
+                    <div class="star-rating center">****</div>
+                    <img src="{{this.picture}}" alt="this is a test" class="responsive-img right location-pictures">
+                </div>
+
+                <div class="col s9 m9 l9">
+                    <h4>{{this.locationName}}</h4>
+                    <p class="flow-text">{{this.body}}</p>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+{{/each}}
+        </div>
+{{!-- {{#each post}}        
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <div class="z-depth-5">
-                    <div class="card-panel">
-                        <span class="black-text">I am a very simple card. I am good at containing small bits of information. I am convenient because
-                            I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-                        </span>
+                <div class="card horizontal">
+                    <div class="z-depth-5">
+                        <div class="col s3 m3 l3">
+                            <div class="star-rating center">****</div>
+                        <div class="card-image">
+                            <img src="{{this.picture}}" alt="this is a test" class="responsive-img right location-pictures">
+                        </div>
+                        </div>
+                        
+                        <div class="card-panel">
+                        <div class="col s9 m9 l9">
+                            <h4>{{this.locationName}}</h4>
+                            <span class="black-text">{{this.body}}</span>
+                        </div>  
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+{{/each}}     --}}
     <!-- End of status content -->
     <!-- Page Footer -->
     <footer class="page-footer">
@@ -158,8 +185,10 @@
     <!-- Display content -->
     <!--Import jQuery before materialize.js-->
     <!-- Jquery cdn -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
+    {{!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" --}}
+        {{!-- crossorigin="anonymous"></script> --}}
     <!-- Compiled and minified Materialize JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script src="assets/java/app.js"></script>
+    {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> --}}
+    {{!-- <script src="/assets/java/app.js"></script> --}}
+    
+    

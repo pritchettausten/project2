@@ -43,10 +43,10 @@
   body{
     background-color: white;
  }
- .parallax-container{
+ /* .parallax-container{
     height: 330px;
     
- }
+ } */
  nav{
     background: linear-gradient(to bottom right, rgb(226, 62, 33), purple);
  

@@ -1,9 +1,8 @@
 {
   "development": {
   "username": "root",
-  "password": "root",
-  "port": "8889",
-  "database": "project_db",
+  "password": "9@gbl721",
+  "database": "outdoors_db",
   "host": "localhost",
   "dialect": "mysql"
 },
