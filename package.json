@@ -1,7 +1,7 @@
 {
   "name": "project2",
   "version": "1.0.0",
-  "description": "",
+  "description": "web app",
   "main": "server.js",
   "dependencies": {
     "bcrypt": "^1.0.3",
