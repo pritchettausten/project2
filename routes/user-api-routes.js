@@ -99,6 +99,19 @@ module.exports = function(app){
 
     });
 
+    
+    app.post("/update", function(req, res) {
+            db.User.update({about: req.body.about}, {
+                where: {
+                    id: req.body.id
+                }
+            }).then(function(response) {
+                if(response) {
+                    res.json(response);
+                }
+            })
+        });
+
     app.post("/login", function(req, res){
         db.User.findOne({
             where: {
