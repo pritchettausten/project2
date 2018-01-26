@@ -406,6 +406,19 @@ $("#logout").on("click", function() {
     });
 });
 
+$("#update").on("click", function() {
+    var data = {
+        about: $("#aboutText").val().trim(),
+        id: userId
+    };
+    $.ajax("/update", {
+        type: "Post",
+        data: data
+    }).then(function(results) {
+        location.reload();
+    });
+});
+
 //    $("#user").on("click", function() {
 //         var Id = 1;
 //         var data = {
