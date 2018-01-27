@@ -3,8 +3,6 @@ var db = require("../models");
 module.exports = function(app){
 
     app.get("/", function(req, res){
-
-        //res.render("index");
         db.Post.findAll({}).then(function(dbPost){
             var obj = {
                 post: dbPost
@@ -23,7 +21,6 @@ module.exports = function(app){
             // }
             //console.log(arr);
             res.render("index", obj);
-
         });
     });
 
@@ -74,16 +71,6 @@ module.exports = function(app){
             res.json(dbPost);
         });
     })
-
-    // app.get("/logged", function(req, res){
-    //     db.Post.findAll({
-    //     }).then(function(dbPost){
-    //         var obj = {
-    //             post: dbPost
-    //         };
-    //         res.render("logged", obj);
-    //     });
-    // });
 
     app.post("/api/posts", function(req, res){
         db.Post.create(req.body).then(function(dbPost) {
